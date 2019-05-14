@@ -9,7 +9,7 @@ export default {
       userId: getCookie('userId'),
       avatorImgPath: '',
       token: getToken(),
-      access: '',
+      access: sessionStorage.getItem('access') ,
       hasGetInfo: false
     },
     mutations: {
@@ -27,6 +27,7 @@ export default {
       },
       setAccess (state, access) {
         state.access = access
+        sessionStorage.setItem('access',access);
       },
       setToken (state, token) {
         state.token = token

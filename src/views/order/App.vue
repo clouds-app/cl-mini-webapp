@@ -1,0 +1,88 @@
+<template>
+  <div id="app">
+    i am order
+    <br/>
+    this is my accress:{{NewAccess}}
+    <br/>
+     <button @click="handleModifyAccress()">修改access</button>
+     <a href="/index#/">index</a>
+   <br/>
+      <br/>
+      <ul class="center">
+      <li @click="order">跳转订单页面</li>
+      <li @click="mine">跳转我的页面</li>
+      <li @click="openFrame">订单详细</li>
+    </ul>
+  </div>
+</template>
+<script>
+export default {
+  name:'order',
+  data(){
+    return {
+      access:'',
+    }
+  },
+  computed:{
+      NewAccess(){
+        return this.$store.state.app.access
+      }
+  },
+  mounted(){
+    //this.access =this.$store.state.app.access
+  },
+  methods:{
+      // 跳转订单页面
+    order () {
+      window.api.openWin({
+        name: 'order',
+        url: 'order.html'
+      })
+    },
+    // 跳转我的页面
+    mine () {
+      window.api.openWin({
+        name: 'index',
+        url: 'index.html'
+      })
+    },
+      handleModifyAccress(){
+         this.$store.commit('setAccess','order modify admin')
+         console.warn('修改 order accress')
+      },
+       // 打开订单页面frame
+    openFrame () {
+      window.api.openFrame({
+        name: 'orderDetailFrame',
+        url: 'orderDetailFrame.html',
+        rect: {
+          x: 60,
+          y: 0,
+          w: 'auto',
+          h: 'auto'
+        }
+      })
+    }
+  }
+}
+</script>
+
+<style lang="less">
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+#nav {
+  padding: 30px;
+  a {
+    font-weight: bold;
+    color: #2c3e50;
+    &.router-link-exact-active {
+      color: #42b983;
+    }
+  }
+}
+</style>
