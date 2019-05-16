@@ -54,14 +54,18 @@ export default {
     order () {
       window.api.openWin({
         name: 'order',
-        url: 'order.html'
+        url: 'order.html',
+        useWKWebView: true, // ←关键在这里
+        reload:true
       })
     },
     // 跳转我的页面
     mine () {
       window.api.openWin({
         name: 'index',
-        url: 'index.html'
+        url: 'index.html',
+         useWKWebView: true, // ←关键在这里
+        reload:true
       })
     },
     handleModifyAccress(){

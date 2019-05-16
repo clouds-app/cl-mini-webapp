@@ -34,16 +34,20 @@ export default {
   methods:{
       // 跳转订单页面
     order () {
-      window.api.openWin({
+      window.api.closeToWin({
         name: 'order',
-        url: 'order.html'
+        url: 'order.html',
+        useWKWebView: true, // ←关键在这里
+        reload:true
       })
     },
     // 跳转我的页面
     mine () {
-      window.api.openWin({
+      window.api.closeToWin({
         name: 'index',
-        url: 'index.html'
+        url: 'index.html',
+         useWKWebView: true, // ←关键在这里
+        reload:true
       })
     },
       handleModifyAccress(){
