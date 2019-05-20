@@ -19,7 +19,6 @@ export default {
         return new Promise((resolve, reject) => {
           login(params).then(res => {
             const data = process.env.NODE_ENV === 'production' ? res : res.data //因为web 浏览器 多封装了一层 data 包裹
-            console.warn(JSON.stringify(res))
             if(data.success)
             {
               resolve()
