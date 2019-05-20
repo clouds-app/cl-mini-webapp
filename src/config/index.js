@@ -11,7 +11,7 @@ export default {
      * @description api请求基础路径 
      */
     baseUrl: {
-      dev: '',//http://192.168.168.111:8081/clerp-shop-admin/
+      dev: '',
       pro: 'http://shop.szclsoft.com'
     },
     

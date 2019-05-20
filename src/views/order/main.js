@@ -1,8 +1,8 @@
 import Vue from 'vue'
-import App from './App.vue'
-import router from './../../router'
-import store from './../../store'
-import config from './../../config'
+import App from './Order.vue'
+import router from '@/router'
+import store from '@/store'
+import config from '@/config'
 
 /**
  * @description 全局注册应用配置 add by andy 2019-04-22  

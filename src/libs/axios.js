@@ -47,22 +47,17 @@ class HttpRequest {
     })
     // 响应拦截
     instance.interceptors.response.use(res => {
-      //
-			if(res.data.status == 443){
-        //debugger
-        store.dispatch('handleLogOut').then(res=>{
-          let rediretUrl ='http://'+window.location.host+'/#/login'
-          window.location.href = rediretUrl //defaultSetting.baseUrl.pro
-        })
-        // Window.vm.$router.push({
-				// 	path: '/login'
-        // });
-				return;
-      }else{
+			// if(res.data.status == 443){
+      //   store.dispatch('handleLogOut').then(res=>{
+      //     let rediretUrl ='http://'+window.location.host+'/#/login'
+      //     window.location.href = rediretUrl //defaultSetting.baseUrl.pro
+      //   })
+			// 	return;
+      // }else{
           this.destroy(url)
           const { data, status } = res
           return { data, status }
-      }
+      // }
    
     }, error => {
       this.destroy(url)
@@ -73,8 +68,10 @@ class HttpRequest {
   request (options) {
     const instance = axios.create()
     options = Object.assign(this.getInsideConfig(), options)
+
     this.interceptors(instance, options.url)
     return instance(options)
+
   }
 }
 export default HttpRequest

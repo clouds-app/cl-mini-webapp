@@ -37,7 +37,6 @@ export default {
       window.api.closeToWin({
         name: 'order',
         url: 'order.html',
-        useWKWebView: true, // ←关键在这里
         reload:true
       })
     },
@@ -46,7 +45,6 @@ export default {
       window.api.closeToWin({
         name: 'index',
         url: 'index.html',
-         useWKWebView: true, // ←关键在这里
         reload:true
       })
     },

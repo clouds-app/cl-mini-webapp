@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    i am  index  
+    i am  index  <helloWorld/>
      <br/>
     <br/>
     {{msg}} + {{NewAccess}}
@@ -11,6 +11,7 @@
     <br/>
       <br/>
       <ul class="center">
+     <li @click="login">用户登录</li>
       <li @click="order">跳转订单页面</li>
       <li @click="mine">跳转我的页面</li>
       <li @click="openScan">打开扫描</li>
@@ -19,6 +20,7 @@
 </template>
 
 <script>
+import helloWorld from '_c/HelloWorld.vue'
 export default {
   name:'index',
   data(){
@@ -33,6 +35,7 @@ export default {
       }
   },
   components: {
+    helloWorld
   },
   mounted(){
     this.access =this.$store.state.app.access
@@ -50,12 +53,18 @@ export default {
             }
         })
     },
+    login(){
+        window.api.openWin({
+        name: 'login',
+        url: 'login.html',
+        reload:true
+      })
+    },
      // 跳转订单页面
     order () {
-      window.api.openWin({
+      api.openWin({
         name: 'order',
         url: 'order.html',
-        useWKWebView: true, // ←关键在这里
         reload:true
       })
     },

@@ -1,9 +1,18 @@
 <template>
   <div id="app">
    order pay
+   <helloWorld/>
     <router-view/>
   </div>
 </template>
+<script>
+import helloWorld from '_c/HelloWorld.vue'
+export default {
+  name:'orderPay',
+  components:{helloWorld}
+  
+}
+</script>
 
 <style lang="less">
 #app {
