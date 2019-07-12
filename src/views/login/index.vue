@@ -1,19 +1,11 @@
 <template>
   <div id="app">
-        <span class="loginTitle">用户登录</span> 
-     <div class="container">
-       <div class="usernName">
-           <label for="userName">用户名：</label>
-           <input id="userName" placeholder="输入用户名" v-model="loginForm.username" type="input"/>
-       </div>
-       <div class="userPassWord">
-            <label for="userPassword">用户密码：</label>
-           <input id="userName" placeholder="输入用户密码" v-model="loginForm.password" type="input"/>
-       </div>
-       <div class="submitButton">
-            <button @click="hangleLogin()">登陆</button>
-       </div>
-     </div>
+       i am login page view
+       <van-button type="default">默认按钮</van-button>
+        <van-button type="primary">主要按钮</van-button>
+        <van-button type="info">信息按钮</van-button>
+        <van-button type="warning">警告按钮</van-button>
+        <van-button type="danger">危险按钮</van-button>
     
   </div>
 </template>

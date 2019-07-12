@@ -1,18 +1,6 @@
 <template>
   <div id="app">
-    i am order
-    <br/>
-    this is my accress:{{NewAccess}}
-    <br/>
-     <button @click="handleModifyAccress()">修改access</button>
-     <a href="/index#/">index</a>
-   <br/>
-      <br/>
-      <ul class="center">
-      <li @click="order">跳转订单页面</li>
-      <li @click="mine">跳转我的页面</li>
-      <li @click="openFrame">订单详细</li>
-    </ul>
+
   </div>
 </template>
 <script>

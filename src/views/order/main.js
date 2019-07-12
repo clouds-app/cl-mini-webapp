@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import App from './Order.vue'
+import App from './order.vue'
 import router from '@/router'
 import store from '@/store'
 import config from '@/config'
@@ -11,7 +11,7 @@ Vue.prototype.$config = config
 
 Vue.config.productionTip = false
 
-if(process.env.NODE_ENV === 'production'){
+if(config.isRunApp){
   window.apiready = () => {
     new Vue({
       router,
