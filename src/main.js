@@ -6,6 +6,7 @@ import config from '@/config'
 import 'lib-flexible/flexible.js'
 import Vant from 'vant'
 import 'vant/lib/index.css'
+
 Vue.use(Vant)
 /**
  * @description 全局注册应用配置 add by andy 2019-07-22  

@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import App from './index.vue'
+import App from './login.vue'
 import router from '@/router'
 import store from '@/store'
 import config from '@/config'

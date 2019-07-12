@@ -1,6 +1,5 @@
 const path = require('path') //使用node.js的内置path模块 //require 中的路径总是相对于包含它的文件，跟你的工作目录没有关系。
-const pages = require('./src/libs/pages')
-//const pages = require('./src/libs/multi-page')
+//const pages = require('./src/libs/pages') //默认是使用单页面开发
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const resolve = dir => path.join(__dirname, dir)//path.join() 方法使用平台特定的分隔符作为定界符将所有给定的 path 片段连接在一起，然后规范化生成的路径。
 const CompressionWebpackPlugin = require('compression-webpack-plugin')
@@ -14,7 +13,7 @@ module.exports = {
 
   publicPath: process.env.NODE_ENV === 'production' ? './' : '/',
   // 构建多页面应用，页面的配置
-  pages:pages,
+  //pages:pages,
   //调整内部的 webpack 配置。// 对内部的 webpack 配置（比如修改、增加Loader选项）(链式操作)
   chainWebpack: config => {
     //修改 Loader 选项
@@ -81,13 +80,20 @@ productionSourceMap: false,
   sourceMap: false,
   // css预设器配置项
   loaderOptions: {
-    // pass options to sass-loader
-    // sass: {
+    // pass options to less-loader
+    // less: {
     //   // 引入全局变量样式
     //   data: `
-    //     @import "@/stylePath/theme.scss;
+    //     @import "@/assets/style/var.less
     //   `
     // }
+    less: {
+      modifyVars: {
+        //red: '#03a9f4',
+        blue: '#3296fa',
+       
+      }
+    }
   },
   // 启用 CSS modules for all css / pre-processor files.
   modules: false,

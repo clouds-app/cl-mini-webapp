@@ -4,18 +4,19 @@
 // 都是通过修改ajax方法传入的参数进行封装,
 // import config from '@/config'
 // const baseUrl = process.env.NODE_ENV === 'development' ? config.baseUrl.dev : config.baseUrl.pro
-const isApp = process.env.NODE_ENV === 'development' ? false : true //
+
 // 默认配置对象
 var options = {
     // 基础url前缀
-    baseUrl:'',
+   // baseUrl: baseUrl,
+     baseUrl:'',
     // 默认错误处理函数
     defErrHandle: err => {throw new Error(JSON.stringify(err))},
     // 默认成功处理函数
     defSueHandle: () => {},
     // 响应成功拦截器
     interceptorResSuc: (res, fn) => {
-     // console.warn('响应成功拦截器:'+JSON.stringify(res))
+      //console.warn('响应成功拦截器:'+JSON.stringify(res))
       return fn(res.data)
     },
     // 响应失败拦截器
@@ -25,43 +26,39 @@ var options = {
       //console.warn('响应失败拦截器:'+JSON.stringify(err))
       let { data, config } = err;
       if (data.statusCode === 0) {
-        if(isApp){
-           // 广播网络错误
-            window.api.sendEvent({name: 'netError'})
-          //   监听事件，支持系统事件和自定义事件。
-          //  addEventListener('netError', callback(ret, err))
-            window.api.toast({
-                msg: '"网络无法连接服务，请稍后再试！',
-                duration: 2000,
-                location: 'bottom'
-            })
-        }
-       // console.warn('响应失败拦截器sendEvent: netError')
-       
+        // 广播网络错误
+        window.api.sendEvent({name: 'netError'})
       }
       return rej({...err.data, url: err.config.url})
     },
     // 请求拦截器
     interceptorReq: (config) => {
        // 加载loading
-       window.api.showProgress({
-        title:"获取数据中...",
-        text: '请稍等...'
-        });
-     // console.warn('请求拦截器:'+JSON.stringify(config))
+       //console.warn('请求拦截器:'+JSON.stringify(config))
+       //请求拦截器:{"url":"http://120.78.91.203:12689/api/GetLineList","data":{"values":{"timer":"timerRun"}},"method":"post","transformRequest":[null]}
+      //let tempObj = JSON.stringify(config)
+      //console.warn('请求拦截器config.data.values.timer:'+config.data.values.timer)
+       if(config.data.values && (config.data.values.timer==null || config.data.values.timer=='')){
+          window.api.showProgress({
+          title:"获取数据中...",
+          text: '请稍等...'
+          });
+       }
+      
+      //console.warn('请求拦截器:'+JSON.stringify(config))
       return config
     }
   }
   
-  class ApiAjax {
+  class serverApiAjax {
     /**
      * 构造方法
      * @param  {object} config 配置参数
      */
     constructor (config) {
-
+     // console.warn('serverApiAjax 构造方法:'+JSON.stringify(config))
       options = Object.assign(options, config);
- 
+      //console.warn('构造方法:'+JSON.stringify(config))
     }
     /**
      * 配置 其它参数
@@ -108,4 +105,4 @@ var options = {
     }
   }
  
-  export default ApiAjax
+  export default serverApiAjax

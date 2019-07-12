@@ -1,13 +1,51 @@
 import Cookies from 'js-cookie'
+import localStorage from 'localStorage'
 // cookie保存的天数
 import config from '@/config'
 import { forEach, hasOneOf, objEqual } from '@/libs/tools'
-
+const isApp = process.env.NODE_ENV === 'development' ? false : true //
 export const TOKEN_KEY = 'token'
 
 export const setToken = (token) => {
   Cookies.set(TOKEN_KEY, token, {expires: config.cookieExpires || 1,path: '/'})
 }
+
+// 设置数据存储
+export const setLocalStorage = (key,value) => {
+  if(isApp){
+    $api.setStorage(key,value)
+  }else{
+    localStorage.setItem(key, value);
+  }
+  
+}
+
+// 获取数据存储
+export const getLocalStorage  = (key) => {
+  if(isApp){
+    const value = $api.getStorage(key)
+    if (value) return value
+    else return ''
+  }else{
+
+    const value = localStorage.getItem(key);
+    if (value) return value
+    else return ''
+  }
+}
+
+// 移除指定数据存储
+export const removeLocalStorage = (key) => {
+  if(isApp){
+    $api.rmStorage(key)
+  }else{
+    localStorage.removeItem(key);
+  }
+ 
+}
+
+
+
 
 export const setCookie = (key,value) => {
   //不设置path 会导致延时，不即时
@@ -18,11 +56,13 @@ export const removeCookie = (key) => {
 	 Cookies.remove(key, {path: '/'});
 }
 
+
+
 export const getCookie = (key) => {
   //debugger
   const value = Cookies.get(key);
   if (value) return value
-  else return false
+  else return ''
 }
 
 export const getToken = () => {
