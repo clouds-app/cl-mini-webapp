@@ -478,11 +478,13 @@
         return u.fixStatusBar(el);
     };
     u.fixStatusBar = function(el){
+        
         if(!u.isElement(el)){
             console.warn('$api.fixStatusBar Function need el param, el param must be DOM Element');
             return 0;
         }
         el.style.paddingTop = api.safeArea.top + 'px';
+       // alert('in'+el.style.paddingTop)
         return el.offsetHeight;
     };
     u.fixTabBar = function(el){

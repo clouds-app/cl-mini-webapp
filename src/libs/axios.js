@@ -1,5 +1,6 @@
 import axios from 'axios'
 import defaultSetting from '@/config'
+import { getToken, setToken,setLocalStorage,getLocalStorage } from '@/libs/util'
 import store from '@/store'
 // import { Spin } from 'iview'
 const addErrorLog = errorInfo => {
@@ -22,7 +23,8 @@ class HttpRequest {
     const config = {
       baseURL: this.baseUrl,
       headers: {
-        //
+        token:getToken(),
+        time: Date.now().toString()
       }
     }
     return config

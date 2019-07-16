@@ -6,6 +6,7 @@
  */
 import headerview from '_c/header'
 import footerview from '_c/footer'
+import config from '@/config'
 import * as switchMethods  from '@/libs/switchMethods'
 export default {
     name:'mixin',
@@ -26,7 +27,7 @@ export default {
        },
        //安卓手机禁用返回键
        forbidReturn(){
-        if(this.$config.isRunApp){
+        if(config.isRunApp){
           window.api.addEventListener({
             name: 'keyback'
           }, function(ret, err){
@@ -45,14 +46,15 @@ export default {
           switchMethods.turnToPage(params)
       },
       fixHeaderStatusBar(){
-        if(this.$config.isRunApp){
-          let header = $api.byId('appheader');
+        if(config.isRunApp){
+          let header = $api.byId('appheader')
+          //console.log('header：'+header.innerHTML)
           $api.fixStatusBar(header);
         }
        
       },
       fixFooterStatusBar(){
-        if(this.$config.isRunApp){
+        if(config.isRunApp){
           let header = $api.byId('appheader');
           let footer = $api.byId('appfooter');
           let headerH = $api.offset(header).h
@@ -64,7 +66,7 @@ export default {
          //获取设备编码
          getDeviceId(){
           let deviceId = 'dk408F8B-9598-48B6-A740-B9037ADCXXXE'
-          if(this.$config.isRunApp){
+          if(config.isRunApp){
               let deviceId_Param = window.api.getPrefs({
                 sync: true,
                 key: 'deviceId'
@@ -82,8 +84,10 @@ export default {
       
     },
     mounted(){
+     
+     // console.log('fixHeaderStatusBar')
       this.fixHeaderStatusBar();
-      if(this.$config.isRunApp){
+      if(config.isRunApp){
         this.RefreshEventListener(function(){})
       }
     }

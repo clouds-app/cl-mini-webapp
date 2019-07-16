@@ -15,14 +15,14 @@ var options = {
     defSueHandle: () => {},
     // 响应成功拦截器
     interceptorResSuc: (res, fn) => {
-     // console.warn('响应成功拦截器:'+JSON.stringify(res))
+      console.warn('响应成功拦截器:'+JSON.stringify(res))
       return fn(res.data)
     },
     // 响应失败拦截器
     // 默认把错误信息和出错接口向上抛出
     interceptorResErr: (err,  res, rej) => {
       
-      //console.warn('响应失败拦截器:'+JSON.stringify(err))
+      console.warn('响应失败拦截器:'+JSON.stringify(err))
       let { data, config } = err;
       if (data.statusCode === 0) {
         if(isApp){
@@ -36,7 +36,7 @@ var options = {
                 location: 'bottom'
             })
         }
-       // console.warn('响应失败拦截器sendEvent: netError')
+        console.warn('响应失败拦截器sendEvent: netError')
        
       }
       return rej({...err.data, url: err.config.url})
@@ -48,7 +48,7 @@ var options = {
         title:"获取数据中...",
         text: '请稍等...'
         });
-     // console.warn('请求拦截器:'+JSON.stringify(config))
+      console.warn('请求拦截器:'+JSON.stringify(config))
       return config
     }
   }

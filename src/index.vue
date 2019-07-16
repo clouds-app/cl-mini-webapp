@@ -18,9 +18,6 @@ export default {
   computed:{
      
   },
-  components: {
-  
-  },
   mounted(){
   
   },

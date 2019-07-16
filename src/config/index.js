@@ -1,3 +1,22 @@
+
+const is_mobi = navigator.userAgent.toLowerCase().match(/(ipod|ipad|iphone|android|coolpad|mmp|smartphone|midp|wap|xoom|symbian|j2me|blackberry|wince)/i) != null;
+/**
+ * @returns {String} 当前浏览器名称
+ */ 
+const getExplorer = () => {
+  const ua = window.navigator.userAgent
+  const isExplorer = (exp) => {
+    return ua.indexOf(exp) > -1
+  }
+  if (isExplorer('MSIE')) return 'IE'
+  else if (isExplorer('Firefox')) return 'Firefox'
+  else if (isExplorer('Chrome')) return 'Chrome'
+  else if (isExplorer('Opera')) return 'Opera'
+  else if (isExplorer('Safari')) return 'Safari'
+}
+
+console.log("is_mobi:"+is_mobi)
+console.log("getExplorer:"+getExplorer())
 export default {
     /**
      * @description 默认页面标题
@@ -6,7 +25,7 @@ export default {
     /**
      * @description 是否app 运行环境
      */
-    isRunApp: false, //process.env.NODE_ENV === 'production'
+    isRunApp: process.env.NODE_ENV === 'production',//is_mobi,//
     /**
      * @description token在Cookie中存储的天数，默认1天
      */
@@ -16,10 +35,10 @@ export default {
      */
     baseUrl: {
       dev: '',
-      pro: 'http://shop.szclsoft.com'
+      pro: 'http://192.168.168.101:8080'//clerp-app-api/
     },
     
-	baseImgUrl:'http://shop.szclsoft.com',
+	baseImgUrl:'http://192.168.168.101:8080/clerp-app-api',
 
     /**
      * @description 默认打开的首页的路由name值，默认为home

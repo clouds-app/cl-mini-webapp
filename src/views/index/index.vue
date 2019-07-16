@@ -11,32 +11,28 @@ export default {
   name:'index',
   data(){
     return {
-       msg:'this is index msg',
        access:''
     }
   },
   computed:{
      
   },
-  components: {
-  
-  },
   mounted(){
   
   },
   methods:{
-    openScan(){
-      var FNScanner = window.api.require('FNScanner');
-        FNScanner.open({
-            autorotation: true
-        }, function(ret, err) {
-            if (ret) {
-                alert(JSON.stringify(ret));
-            } else {
-                alert(JSON.stringify(err));
-            }
-        })
-    },
+    // openScan(){
+    //   var FNScanner = window.api.require('FNScanner');
+    //     FNScanner.open({
+    //         autorotation: true
+    //     }, function(ret, err) {
+    //         if (ret) {
+    //             alert(JSON.stringify(ret));
+    //         } else {
+    //             alert(JSON.stringify(err));
+    //         }
+    //     })
+    // },
   
 }
 }
@@ -47,7 +43,7 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
- // text-align: center;
+  text-align: center;
  // color: #2c3e50;
 }
 

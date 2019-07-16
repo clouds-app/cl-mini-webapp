@@ -1,9 +1,8 @@
 <template>
-    <div class="NavBarcontainer" id="appheader">
-        <van-nav-bar :fixed="true"
+  <div class="NavBarcontainer"  >
+        <van-nav-bar id="appheader"   :fixed="true"
                 :title="title"
                 left-text=""
-                right-text="菜单"
                 left-arrow
                 @click-left="onClickLeft"
                 @click-right="onClickRight"
@@ -45,6 +44,10 @@ export default {
 
         }
     },
+    mounted(){
+        //   let header = $api.byId('appheader')
+        //   $api.fixStatusBar(header);
+    },
     methods: {
     onClickLeft() {
       //this.toast('返回');
@@ -58,10 +61,10 @@ export default {
 </script>
 <style scoped>
 .headerMargin{
-    margin-top:50px;
+    margin-top:70px;
 }
 .NavBarcontainer{
-    background-color:#3296fa
+    background-color:#3296fa;
 }
 .van-nav-bar{
       background-color:#3296fa

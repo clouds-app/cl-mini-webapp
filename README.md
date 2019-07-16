@@ -1,4 +1,7 @@
 # cl-mini-webapp
+http://192.168.168.101:8080/clerp-app-api/swagger-ui.html
+
+http://192.168.168.101:8080/clerp-app-api/user/login
 
 ## Project setup
 ```
